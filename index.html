@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOM : TRACE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <header class="hud">
+            <span id="room-display">ROOM: #001</span>
+            <span id="trace-id">TRACE_ID: <span id="trace-val">INIT</span></span>
+        </header>
+
+        <div id="game-stage" class="stage">
+            <div id="player" class="entity player"></div>
+            <div id="door" class="entity door"></div>
+        </div>
+
+        <div class="console-log">
+            <div id="log-content">
+                <p>> SYSTEM: Booting sequence...</p>
+                <p>> SYSTEM: Connection established.</p>
+                <p>> TRACE: Start.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="puzzle-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="puzzle-title">SECURITY CHECK</h2>
+            <p id="puzzle-desc">문제 내용이 여기에 표시됩니다.</p>
+            <input type="text" id="puzzle-input" placeholder="ANSWER..." autocomplete="off">
+            <div class="modal-buttons">
+                <button id="btn-submit">SUBMIT</button>
+                <button id="btn-close">CLOSE</button>
+            </div>
+            <p id="puzzle-feedback"></p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
