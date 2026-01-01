@@ -1,0 +1,149 @@
+:root {
+    --bg-color: #111;
+    --text-color: #eee;
+    --accent-color: #0f0; /* 해커 느낌의 네온 그린 */
+    --door-color: #444;
+    --player-color: #fff;
+    --modal-bg: rgba(0, 0, 0, 0.9);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', monospace; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 800px;
+    height: 600px;
+    border: 2px solid var(--text-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HUD */
+.hud {
+    padding: 10px;
+    border-bottom: 1px solid var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+/* GAME STAGE */
+.stage {
+    flex-grow: 1;
+    position: relative;
+    background: radial-gradient(circle, #222 0%, #000 100%);
+    overflow: hidden;
+}
+
+/* ENTITIES */
+.entity {
+    position: absolute;
+    transition: top 0.1s, left 0.1s; /* 부드러운 이동 */
+}
+
+.player {
+    width: 30px;
+    height: 30px;
+    background-color: var(--player-color);
+    box-shadow: 0 0 10px var(--player-color);
+    z-index: 10;
+}
+
+.door {
+    width: 60px;
+    height: 10px;
+    background-color: var(--door-color);
+    border: 1px solid var(--accent-color);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+.door::after {
+    content: "EXIT";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--accent-color);
+}
+
+.object {
+    width: 40px;
+    height: 40px;
+    border: 1px dashed var(--accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--accent-color);
+}
+.object:hover { background-color: #222; }
+
+/* CONSOLE LOG */
+.console-log {
+    height: 150px;
+    border-top: 1px solid var(--text-color);
+    background-color: #000;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #aaa;
+}
+#log-content p { margin-bottom: 5px; }
+#log-content p:last-child { color: var(--accent-color); } /* 최신 로그 강조 */
+
+/* MODAL */
+.modal {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--modal-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.hidden { display: none; }
+
+.modal-content {
+    width: 400px;
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    text-align: center;
+    background: #000;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 15px 0;
+    background: #111;
+    border: 1px solid #555;
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+input:focus { outline: 1px solid var(--accent-color); }
+
+button {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 15px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+button:hover { background: var(--text-color); color: #000; }
